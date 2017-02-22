@@ -36,7 +36,7 @@ module Devise
       when Class
         Devise.mappings.each_value { |m| return m.name if duck <= m.to }
       else
-        Devise.mappings.each_value { |m| return m.name if duck.is_a?(m.to) }
+        Devise.mappings.each_value { |m| return m.name if duck.class.name == m.to.name }
       end
 
       raise "Could not find a valid mapping for #{duck.inspect}"
